@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRITICAL SECURITY BREACH</title>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 font-mono text-red-500 min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden scanline">
+
+    <!-- Glitch / Warning Box -->
+    <div class="w-full max-w-2xl bg-zinc-900 border-2 border-red-600 rounded-lg p-8 shadow-[0_0_30px_rgba(220,38,38,0.2)] text-center relative z-10">
+        
+        <!-- Skull/Alert Icon -->
+        <div class="text-red-500 animate-bounce mb-6 inline-block">
+            <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 mx-auto">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+            </svg>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-black uppercase tracking-widest text-white mb-2">
+            ⚠️ DNS Takeover Successful
+        </h1>
+        <p class="text-red-400 font-bold text-lg mb-6 animate-pulse">
+            [ Subdomain Hijacked Successfully ]
+        </p>
+
+        <div class="bg-black text-left p-5 rounded border border-zinc-800 text-sm text-zinc-400 space-y-2 mb-6">
+            <div><span class="text-green-500">➜</span> <span class="text-zinc-200 font-semibold">Target Domain:</span> app.company.local</div>
+            <div><span class="text-green-500">➜</span> <span class="text-zinc-200 font-semibold">Vulnerability:</span> Dangling CNAME Record</div>
+            <div><span class="text-green-500">➜</span> <span class="text-zinc-200 font-semibold">Status:</span> Total traffic & session hijacking vector achieved.</div>
+        </div>
+
+        <p class="text-xs text-zinc-500 italic">
+            Fix this by ensuring all retired external cloud services have their matching DNS pointers removed.
+        </p>
+    </div>
+
+    <!-- Matrix-like backdrop subtle text -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none flex flex-wrap content-start text-[10px] uppercase p-4 overflow-hidden select-none">
+        CNAME_VULN_EXPLOITED_ DANGLING_DNS_RECORD_FOUND_ ATTACKER_NODE_CONNECTED_ SESSION_COOKIE_HARVEST_INITIATED_
+    </div>
+
+</body>
+</html>

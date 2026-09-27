@@ -1,0 +1,40 @@
+version: '3'
+
+networks:
+  demo-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+services:
+  dns-server:
+    image: ubuntu/bind9:latest
+    container_name: dns-server
+    environment:
+      - BIND9_USER=root
+    volumes:
+      - ./dns-config/named.conf:/etc/bind/named.conf
+      - ./dns-config/db.company.local:/etc/bind/db.company.local
+    networks:
+      demo-net:
+        ipv4_address: 172.20.0.2
+
+  thirdparty-service:
+    image: nginx:alpine
+    container_name: thirdparty-service
+    volumes:
+      - ./legit:/usr/share/nginx/html
+    networks:
+      demo-net:
+        ipv4_address: 172.20.0.3
+
+  attacker:
+    image: nginx:alpine
+    container_name: attacker
+    profiles: ["attack"] # Prevents it from starting automatically
+    volumes:
+      - ./hacked:/usr/share/nginx/html
+    networks:
+      demo-net:
+        ipv4_address: 172.20.0.3 # Reclaims the exact same freed IP

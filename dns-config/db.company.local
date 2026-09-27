@@ -1,0 +1,13 @@
+$TTL    604800
+@       IN      SOA     ns.company.local. root.company.local. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns.company.local.
+ns      IN      A       172.20.0.2
+
+; The dangling CNAME pointing to the external provider
+app     IN      CNAME   thirdparty-service.local.
